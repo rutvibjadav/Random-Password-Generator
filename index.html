@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Create a strong, customizable random password with this free password generator."
+    />
+    <meta name="theme-color" content="#11142b" />
+    <title>Random Password Generator | Veda Technology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="generator-card" aria-labelledby="page-title">
+        <header class="card-header">
+          <div class="brand-mark" aria-hidden="true">✳</div>
+          <p class="eyebrow">VEDA TECHNOLOGY · TASK 17</p>
+          <h1 id="page-title">Random Password<br /><span>Generator</span></h1>
+          <p class="intro">
+            Create a password that’s uniquely yours. Choose your settings and
+            generate one in seconds.
+          </p>
+        </header>
+
+        <section class="password-section" aria-label="Generated password">
+          <div class="section-heading">
+            <label for="password-output">Your password</label>
+            <span id="character-count" class="character-count">0 characters</span>
+          </div>
+          <div class="password-field">
+            <input
+              id="password-output"
+              type="password"
+              placeholder="Your password will appear here"
+              autocomplete="off"
+              readonly
+              aria-label="Generated password"
+            />
+            <button
+              id="toggle-visibility"
+              class="icon-button visibility-button"
+              type="button"
+              aria-label="Show password"
+              aria-pressed="false"
+              title="Show password"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z" />
+                <circle cx="12" cy="12" r="2.7" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="strength-row" aria-live="polite">
+            <div class="strength-meter" aria-hidden="true">
+              <span class="strength-fill"></span>
+            </div>
+            <span id="strength-label" class="strength-label">Not generated</span>
+          </div>
+
+          <div class="button-row">
+            <button id="copy-button" class="button button-secondary" type="button" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="8" y="8" width="12" height="12" rx="2" />
+                <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" />
+              </svg>
+              Copy password
+            </button>
+            <button
+              id="clear-button"
+              class="button button-quiet"
+              type="button"
+              aria-label="Clear generated password"
+              title="Clear password"
+            >
+              Clear
+            </button>
+          </div>
+        </section>
+
+        <div id="notification" class="notification" role="status" aria-live="polite"></div>
+
+        <section class="settings-section" aria-labelledby="settings-title">
+          <div class="settings-title-row">
+            <h2 id="settings-title">Customize password</h2>
+            <span class="settings-caption">YOUR PREFERENCES</span>
+          </div>
+
+          <div class="length-heading">
+            <label for="length-slider">Password length</label>
+            <div class="length-value-wrap">
+              <input
+                id="length-number"
+                class="length-number"
+                type="number"
+                min="4"
+                max="50"
+                value="16"
+                inputmode="numeric"
+                aria-label="Password length, from 4 to 50"
+              />
+              <span>chars</span>
+            </div>
+          </div>
+          <input
+            id="length-slider"
+            class="length-slider"
+            type="range"
+            min="4"
+            max="50"
+            value="16"
+            aria-label="Password length slider, from 4 to 50"
+          />
+          <div class="range-labels" aria-hidden="true">
+            <span>4</span>
+            <span>50</span>
+          </div>
+
+          <fieldset class="character-options">
+            <legend>Include character types</legend>
+            <label class="option-card" for="uppercase">
+              <input id="uppercase" type="checkbox" value="uppercase" checked />
+              <span class="custom-checkbox" aria-hidden="true"></span>
+              <span class="option-copy"><strong>Uppercase</strong><small>A–Z</small></span>
+            </label>
+            <label class="option-card" for="lowercase">
+              <input id="lowercase" type="checkbox" value="lowercase" checked />
+              <span class="custom-checkbox" aria-hidden="true"></span>
+              <span class="option-copy"><strong>Lowercase</strong><small>a–z</small></span>
+            </label>
+            <label class="option-card" for="numbers">
+              <input id="numbers" type="checkbox" value="numbers" checked />
+              <span class="custom-checkbox" aria-hidden="true"></span>
+              <span class="option-copy"><strong>Numbers</strong><small>0–9</small></span>
+            </label>
+            <label class="option-card" for="symbols">
+              <input id="symbols" type="checkbox" value="symbols" checked />
+              <span class="custom-checkbox" aria-hidden="true"></span>
+              <span class="option-copy"><strong>Symbols</strong><small>!@#$%&amp;</small></span>
+            </label>
+          </fieldset>
+
+          <button id="generate-button" class="button button-primary" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.8 14.3 9l6.2 2.3-6.2 2.4-2.3 6.2-2.4-6.2-6.2-2.4L9.6 9 12 2.8Z" />
+              <path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z" />
+            </svg>
+            Generate password
+          </button>
+          <p class="security-note">
+            <span aria-hidden="true">◆</span> Generated locally with your browser’s secure random source.
+          </p>
+        </section>
+      </section>
+
+      <footer class="page-footer">A little more peace of mind, one password at a time.</footer>
+    </main>
+  </body>
+</html>
